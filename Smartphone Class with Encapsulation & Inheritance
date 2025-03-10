@@ -1,0 +1,29 @@
+# Parent Class
+class Smartphone:
+    def __init__(self, brand, model, price):
+        self.brand = brand
+        self.model = model
+        self.__price = price  # Private attribute (Encapsulation)
+
+    def get_price(self):
+        return self.__price
+
+    def phone_info(self):
+        return f"📱 {self.brand} {self.model}, Price: ${self.__price}"
+
+# Child Class with Inheritance
+class Smartwatch(Smartphone):
+    def __init__(self, brand, model, price, battery_life):
+        super().__init__(brand, model, price)  # Inheriting from Smartphone
+        self.battery_life = battery_life  # New attribute
+
+    def phone_info(self):
+        return f"⌚ Smartwatch: {self.brand} {self.model}, Battery Life: {self.battery_life} days, Price: ${self.get_price()}"
+
+# Creating Objects
+phone = Smartphone("Samsung", "Galaxy S23", 999)
+watch = Smartwatch("Apple", "Watch Series 9", 399, 2)
+
+# Output
+print(phone.phone_info())  # 📱 Samsung Galaxy S23, Price: $999
+print(watch.phone_info())  # ⌚ Smartwatch: Apple Watch Series 9, Battery Life: 2 days, Price: $399
